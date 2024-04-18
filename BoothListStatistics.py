@@ -1,5 +1,7 @@
 import gspread
+import gspread.urls
 from gspread.utils import ValueRenderOption, ValueInputOption
+import gspread.utils
 import gspread_formatting
 from gspread_formatting import Borders
 import time
@@ -78,7 +80,7 @@ print("")
 sorted_result = dict(sorted(Genre_Dic.items(), key = lambda item: item[1], reverse=True))
 print(f"sorted result : {sorted_result}")
 
-fmt = gspread_formatting.CellFormat(
+fmt = gspread_formatting.CellFormat(0
 	borders=Borders(
 		top=gspread_formatting.Border("SOLID"),
 		bottom=gspread_formatting.Border("SOLID"),
@@ -89,7 +91,8 @@ fmt = gspread_formatting.CellFormat(
 	verticalAlignment='MIDDLE',
 )
 
-# sheet_genre.delete_rows(statictics_sheetStartIndex, )
+genre_datas_already = sheet_genre.get('D:D', major_dimension=gspread.utils.Dimension.cols)
+sheet_genre.delete_rows(statictics_sheetStartIndex, len(genre_datas_already[0]))
 grade_Index = 1
 duplicate_index = 1
 index = 1
