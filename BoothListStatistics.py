@@ -80,7 +80,7 @@ print("")
 sorted_result = dict(sorted(Genre_Dic.items(), key = lambda item: item[1], reverse=True))
 print(f"sorted result : {sorted_result}")
 
-fmt = gspread_formatting.CellFormat(0
+fmt = gspread_formatting.CellFormat(
 	borders=Borders(
 		top=gspread_formatting.Border("SOLID"),
 		bottom=gspread_formatting.Border("SOLID"),
