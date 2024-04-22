@@ -145,4 +145,6 @@ for key in sorted_result:
 	former_value = sorted_result[key]
 	index += 1
 
+	print(f"장르 {key} 작업 중..... [{index} / {len(sorted_result)}]")
+
 	time.sleep(3.2)												# 1분당 API 요청 한계로 인한 오류가 발생하지 않도록 준 딜레이
