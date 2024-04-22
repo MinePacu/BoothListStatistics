@@ -3,7 +3,7 @@ import gspread.urls
 from gspread.utils import ValueRenderOption, ValueInputOption
 import gspread.utils
 import gspread_formatting
-from gspread_formatting import Borders
+from gspread_formatting import Borders, TextFormat, ColorStyle, Color
 from datetime import datetime
 import time
 
@@ -114,6 +114,10 @@ fmt = gspread_formatting.CellFormat(
 	),
 	horizontalAlignment='CENTER',
 	verticalAlignment='MIDDLE',
+	backgroundColorStyle=ColorStyle(rgbColor=Color(red=1, green=1, blue=1)),
+	textFormat=TextFormat(
+		bold='false'
+	),
 )
 
 genre_datas_already = sheet_genre.get('D:D', major_dimension=gspread.utils.Dimension.cols)
