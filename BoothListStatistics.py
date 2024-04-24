@@ -24,7 +24,7 @@ def clean_N_InList(GenreLists: list[list[str]]):
 
 	return GenreList_temp
 
-def ditributeGenres(GenreLists: list[list[str]]):
+def distributeGenres(GenreLists: list[list[str]]):
 	"""
 	시트에서 가져온 장르 리스트에서 중복을 모두 제외한 장르 리스트르 만듭니다.
 
@@ -54,7 +54,7 @@ def countGenrefromList(GenreLists_origin: list[list[str]], GenreList: list[str])
 	시트에서 가져온 장르 리스트에서 개수를 세어, 통계 기록을 만듭니다.
 
 	@param GenreLists_origin 시트에서 가져온 장르 리스트, 일반적으로 `gspread.WorkSheet.get_values()` 함수를 사용합니다.
-	@param GenreList 함수 `ditributeGenres()`에 의해 반환된 중복 없는 장르 리스트입니다.
+	@param GenreList 함수 `distributeGenres()`에 의해 반환된 중복 없는 장르 리스트입니다.
 
 	@return {장르 : 개수}로 이루어진 `Dictionary`
 	"""
@@ -94,7 +94,7 @@ sh_genre = client_.open_by_key(statistics_spreadsheetId)
 sheet_genre = sh_genre.get_worksheet(statictics_sheetNumber)
 
 GenreDatas = sheet.get_values('D:D', value_render_option=ValueRenderOption.formatted)
-Genre_List = ditributeGenres(GenreDatas)
+Genre_List = distributeGenres(GenreDatas)
 Genre_Dic = countGenrefromList(GenreLists_origin=GenreDatas, GenreList=Genre_List)
 
 print(f"Distribute result : {Genre_List}")
